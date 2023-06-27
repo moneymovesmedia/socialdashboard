@@ -29,11 +29,14 @@ const fetchAccountData = async () => {
       })
     );
     const responses = await Promise.all(promises);
-    const data = await Promise.all(responses.map((response) => response.json()));
-    displayAccountData(data);
+    responses.forEach(async (response, index) => {
+      console.log(`Response from account ${ACCOUNTS[index]}:`);
+      console.log(await response.text());
+    });
   } catch (error) {
     console.error('Error fetching account data:', error);
   }
 };
+
 
 fetchAccountData();
