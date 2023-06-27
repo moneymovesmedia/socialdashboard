@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 const ACCESS_TOKEN = 'awupmyx41hmu1j2n';
 const ACCOUNTS = ['iamturnbull', 'liamoimfmxo']; // Replace with the TikTok account usernames you want to fetch
