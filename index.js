@@ -1,4 +1,5 @@
-import axios from 'axios';
+const fetch = require('node-fetch');
+
 const ACCESS_TOKEN = 'awupmyx41hmu1j2n';
 const ACCOUNTS = ['iamturnbull', 'liamoimfmxo']; // Replace with the TikTok account usernames you want to fetch
 
@@ -21,14 +22,14 @@ const displayAccountData = (data) => {
 const fetchAccountData = async () => {
   try {
     const promises = ACCOUNTS.map((account) =>
-      axios.get(`https://open.tiktokapis.com/v1/user/${account}/stats`, {
+      fetch(`https://open.tiktokapis.com/v1/user/${account}/stats`, {
         headers: {
           Authorization: `Bearer ${ACCESS_TOKEN}`,
         },
       })
     );
     const responses = await Promise.all(promises);
-    const data = responses.map((response) => response.data.user);
+    const data = await Promise.all(responses.map((response) => response.json()));
     displayAccountData(data);
   } catch (error) {
     console.error('Error fetching account data:', error);
