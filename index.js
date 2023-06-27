@@ -1,4 +1,4 @@
-const TikTok = require("tiktok-search");
+import { getUser } from "tiktok-search";
  
-TikTok.getUser('iiamturnbull')
+getUser('iiamturnbull')
 .then(console.log);
