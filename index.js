@@ -1,4 +1,4 @@
-const TikTokSearch = require('tiktok-search');
+import { getUserProfile } from 'tiktok-search';
 
 const ACCOUNTS = ['iamturnbull', 'liamoimfmxo']; // Replace with the TikTok account usernames you want to fetch
 
@@ -20,7 +20,7 @@ const displayAccountData = (data) => {
 
 const fetchAccountData = async () => {
   try {
-    const promises = ACCOUNTS.map((account) => TikTokSearch.getUserProfile(account));
+    const promises = ACCOUNTS.map((account) => getUserProfile(account));
     const data = await Promise.all(promises);
     displayAccountData(data);
   } catch (error) {
