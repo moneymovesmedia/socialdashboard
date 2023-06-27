@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 const ACCESS_TOKEN = 'awupmyx41hmu1j2n';
 const ACCOUNTS = ['iamturnbull', 'liamoimfmxo']; // Replace with the TikTok account usernames you want to fetch
 
@@ -30,7 +28,7 @@ const fetchAccountData = async () => {
     );
     const responses = await Promise.all(promises);
     const data = await Promise.all(responses.map((response) => response.json()));
-    displayAccountData(data); 
+    displayAccountData(data);
   } catch (error) {
     console.error('Error fetching account data:', error);
   }
