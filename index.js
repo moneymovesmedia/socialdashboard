@@ -30,7 +30,7 @@ const fetchAccountData = async () => {
     );
     const responses = await Promise.all(promises);
     const data = await Promise.all(responses.map((response) => response.json()));
-    displayAccountData(data);
+    displayAccountData(data); 
   } catch (error) {
     console.error('Error fetching account data:', error);
   }
