@@ -1,4 +1,4 @@
-const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
+const PROXY_URL = 'https://cors-proxy.htmldriven.com/?url=';
 const TIKTOK_API_URL = 'https://open.tiktokapis.com/v1/user/';
 const ACCESS_TOKEN = 'awupmyx41hmu1j2n';
 const ACCOUNTS = ['iamturnbull', 'liamoimfmxo']; // Replace with the TikTok account usernames you want to fetch
@@ -29,14 +29,11 @@ const fetchAccountData = async () => {
       })
     );
     const responses = await Promise.all(promises);
-    responses.forEach(async (response, index) => {
-      console.log(`Response from account ${ACCOUNTS[index]}:`);
-      console.log(await response.text());
-    });
+    const data = await Promise.all(responses.map((response) => response.json()));
+    displayAccountData(data);
   } catch (error) {
     console.error('Error fetching account data:', error);
   }
 };
-
 
 fetchAccountData();
