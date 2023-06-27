@@ -1,3 +1,5 @@
+const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
+const TIKTOK_API_URL = 'https://open.tiktokapis.com/v1/user/';
 const ACCESS_TOKEN = 'awupmyx41hmu1j2n';
 const ACCOUNTS = ['iamturnbull', 'liamoimfmxo']; // Replace with the TikTok account usernames you want to fetch
 
@@ -20,7 +22,7 @@ const displayAccountData = (data) => {
 const fetchAccountData = async () => {
   try {
     const promises = ACCOUNTS.map((account) =>
-      fetch(`https://open.tiktokapis.com/v1/user/${account}/stats`, {
+      fetch(`${PROXY_URL}${TIKTOK_API_URL}${account}/stats`, {
         headers: {
           Authorization: `Bearer ${ACCESS_TOKEN}`,
         },
